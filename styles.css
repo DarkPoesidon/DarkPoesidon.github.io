@@ -1,30 +1,30 @@
 /* ==========================================================================
-   ThreeUI Aesthetic — Dark Poseidon Portfolio
-   Precision Typography, WebGL Glow, Glassmorphism, Modern Dark Tech
+   ThreeUI Aesthetic — Dark Poseidon Portfolio (Solar Ember / Crimson & Gold)
+   Warm Red, Pure White, Vibrant Orange, Radiant Gold/Yellow Theme
    ========================================================================== */
 
 :root {
-    --bg-base: #04060c;
-    --bg-surface: rgba(10, 14, 26, 0.7);
-    --bg-surface-hover: rgba(16, 22, 40, 0.85);
-    --bg-card: rgba(12, 17, 32, 0.65);
+    --bg-base: #060506;
+    --bg-surface: rgba(22, 16, 18, 0.72);
+    --bg-surface-hover: rgba(32, 22, 25, 0.88);
+    --bg-card: rgba(24, 18, 20, 0.65);
     
-    --border-subtle: rgba(56, 189, 248, 0.12);
-    --border-highlight: rgba(56, 189, 248, 0.35);
-    --border-active: #38bdf8;
+    --border-subtle: rgba(249, 115, 22, 0.15);
+    --border-highlight: rgba(239, 68, 68, 0.4);
+    --border-active: #f97316;
 
-    --primary: #38bdf8;
-    --primary-glow: rgba(56, 189, 248, 0.4);
-    --secondary: #818cf8;
-    --accent: #00f2fe;
-    --rust-color: #f97316;
-    --go-color: #00add8;
-    --android-color: #10b981;
+    --primary: #f97316;          /* Orange */
+    --primary-glow: rgba(249, 115, 22, 0.4);
+    --secondary: #ef4444;        /* Crimson Red */
+    --accent-gold: #fbbf24;      /* Gold / Yellow */
+    --accent-yellow: #facc15;    /* Bright Yellow */
+    --accent-red: #dc2626;       /* Deep Red */
+    --accent-white: #ffffff;
 
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-tertiary: #64748b;
-    --text-code: #38bdf8;
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;
+    --text-tertiary: #9ca3af;
+    --text-code: #fbbf24;
 
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -66,7 +66,7 @@ body {
     background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: #271f22;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -84,27 +84,27 @@ body {
     pointer-events: none;
 }
 
-/* ThreeUI Dot Matrix Grid */
+/* Warm Ember Dot Matrix Grid */
 .grid-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: radial-gradient(rgba(56, 189, 248, 0.09) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px);
     background-size: 32px 32px;
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.35) 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.35) 70%, transparent 100%);
     pointer-events: none;
     z-index: -2;
 }
 
-/* Cursor Ambient Glow Spotlight */
+/* Ambient Glow Spotlight (Warm Ember & Crimson) */
 .ambient-glow {
     position: fixed;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(129, 140, 248, 0.03) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, rgba(239, 68, 68, 0.04) 45%, transparent 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -119,19 +119,19 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fbbf24 35%, #f97316 70%, #ef4444 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
 .text-highlight {
-    color: var(--primary);
+    color: var(--accent-gold);
     font-weight: 600;
 }
 
 /* ==========================================================================
-   Header & Navbar (ThreeUI Style)
+   Header & Navbar
    ========================================================================== */
 .header {
     position: sticky;
@@ -139,7 +139,7 @@ body {
     z-index: 100;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    background: rgba(4, 6, 12, 0.75);
+    background: rgba(6, 5, 6, 0.8);
     border-bottom: 1px solid var(--border-subtle);
     padding: 16px 0;
 }
@@ -164,8 +164,8 @@ body {
     width: 32px;
     height: 32px;
     border-radius: var(--radius-sm);
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: rgba(249, 115, 22, 0.12);
+    border: 1px solid rgba(249, 115, 22, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,9 +174,9 @@ body {
 .brand-dot {
     width: 8px;
     height: 8px;
-    background: var(--primary);
+    background: var(--accent-gold);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--primary);
+    box-shadow: 0 0 10px var(--accent-gold);
 }
 
 .brand-text {
@@ -217,7 +217,7 @@ body {
 }
 
 .nav-item:hover, .nav-item.active {
-    color: var(--primary);
+    color: var(--accent-gold);
 }
 
 .btn-threeui-nav {
@@ -225,7 +225,7 @@ body {
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background: rgba(56, 189, 248, 0.08);
+    background: rgba(249, 115, 22, 0.1);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-pill);
     color: #fff;
@@ -236,9 +236,9 @@ body {
 }
 
 .btn-threeui-nav:hover {
-    background: rgba(56, 189, 248, 0.18);
+    background: rgba(249, 115, 22, 0.22);
     border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.35);
     transform: translateY(-1px);
 }
 
@@ -266,7 +266,7 @@ body {
     gap: 8px;
     padding: 6px 14px;
     border-radius: var(--radius-pill);
-    background: rgba(56, 189, 248, 0.06);
+    background: rgba(249, 115, 22, 0.08);
     border: 1px solid var(--border-subtle);
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -278,13 +278,13 @@ body {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--android-color);
-    box-shadow: 0 0 8px var(--android-color);
+    background: var(--secondary);
+    box-shadow: 0 0 8px var(--secondary);
 }
 
 .pill-version {
-    background: rgba(56, 189, 248, 0.15);
-    color: var(--primary);
+    background: rgba(249, 115, 22, 0.18);
+    color: var(--accent-gold);
     padding: 1px 6px;
     border-radius: 4px;
     font-size: 0.7rem;
@@ -314,7 +314,7 @@ body {
     margin-bottom: 44px;
 }
 
-/* ThreeUI Shader Buttons */
+/* Warm Shader Buttons */
 .threeui-button {
     position: relative;
     display: inline-flex;
@@ -331,26 +331,26 @@ body {
 }
 
 .threeui-button.primary {
-    background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
-    color: #04060c;
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%);
+    color: #060506;
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.35);
 }
 
 .threeui-button.primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 40px rgba(56, 189, 248, 0.55);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.55);
 }
 
 .threeui-button.glass {
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     color: var(--text-primary);
     backdrop-filter: blur(12px);
 }
 
 .threeui-button.glass:hover {
     background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
 
@@ -411,9 +411,9 @@ body {
     width: 100%;
     height: 440px;
     border-radius: var(--radius-lg);
-    background: radial-gradient(circle at center, rgba(14, 22, 45, 0.6) 0%, rgba(6, 9, 20, 0.9) 100%);
+    background: radial-gradient(circle at center, rgba(35, 20, 24, 0.6) 0%, rgba(10, 7, 8, 0.92) 100%);
     border: 1px solid var(--border-subtle);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(56, 189, 248, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 35px rgba(249, 115, 22, 0.08);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -446,7 +446,7 @@ body {
 }
 
 .hud-status {
-    color: var(--primary);
+    color: var(--accent-gold);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -493,8 +493,8 @@ body {
     gap: 6px;
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: var(--primary);
-    background: rgba(56, 189, 248, 0.08);
+    color: var(--accent-gold);
+    background: rgba(249, 115, 22, 0.1);
     border: 1px solid var(--border-subtle);
     padding: 4px 12px;
     border-radius: var(--radius-pill);
@@ -518,7 +518,7 @@ body {
 }
 
 /* ==========================================================================
-   Pinned Repositories Grid (ThreeUI Cards)
+   Pinned Repositories Grid (Warm Glass Cards)
    ========================================================================== */
 .pinned-grid {
     display: grid;
@@ -547,7 +547,7 @@ body {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--primary) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, var(--accent-gold) 35%, var(--primary) 70%, transparent 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -556,7 +556,7 @@ body {
     background: var(--bg-surface-hover);
     border-color: var(--border-highlight);
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(249, 115, 22, 0.16);
 }
 
 .threeui-card:hover::before {
@@ -576,9 +576,9 @@ body {
     gap: 6px;
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: var(--primary);
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--accent-gold);
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.25);
     padding: 3px 8px;
     border-radius: 4px;
 }
@@ -605,7 +605,7 @@ body {
 }
 
 .card-project-title a:hover {
-    color: var(--primary);
+    color: var(--accent-gold);
 }
 
 .card-project-desc {
@@ -673,7 +673,7 @@ body {
 }
 
 .card-stats-group i {
-    color: var(--primary);
+    color: var(--accent-gold);
 }
 
 .card-cta-row {
@@ -689,7 +689,7 @@ body {
     gap: 6px;
     padding: 10px 16px;
     border-radius: var(--radius-sm);
-    background: rgba(56, 189, 248, 0.08);
+    background: rgba(249, 115, 22, 0.1);
     border: 1px solid var(--border-subtle);
     color: #fff;
     text-decoration: none;
@@ -699,9 +699,9 @@ body {
 }
 
 .btn-card-visit:hover {
-    background: var(--primary);
-    color: #04060c;
-    box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+    background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+    color: #fff;
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
 }
 
 .btn-card-clone {
@@ -718,8 +718,8 @@ body {
 }
 
 .btn-card-clone:hover {
-    color: var(--primary);
-    border-color: var(--primary);
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
 }
 
 /* Loading State */
@@ -737,8 +737,8 @@ body {
 .spinner {
     width: 36px;
     height: 36px;
-    border: 3px solid rgba(56, 189, 248, 0.15);
-    border-top-color: var(--primary);
+    border: 3px solid rgba(249, 115, 22, 0.2);
+    border-top-color: var(--accent-gold);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
@@ -764,7 +764,7 @@ body {
 .arch-card:hover {
     border-color: var(--border-highlight);
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
 }
 
 .arch-card-header {
@@ -778,9 +778,9 @@ body {
     font-size: 2rem;
 }
 
-.arch-icon.go { color: var(--go-color); }
-.arch-icon.rust { color: var(--rust-color); }
-.arch-icon.mobile { color: var(--android-color); }
+.arch-icon.go { color: var(--accent-gold); }
+.arch-icon.rust { color: var(--secondary); }
+.arch-icon.mobile { color: var(--primary); }
 
 .arch-badge {
     font-family: var(--font-mono);
@@ -821,7 +821,7 @@ body {
 }
 
 .arch-features i {
-    color: var(--primary);
+    color: var(--accent-gold);
     font-size: 0.75rem;
 }
 
@@ -829,17 +829,17 @@ body {
    Telemetry CLI Section
    ========================================================================== */
 .telemetry-box {
-    background: #060914;
+    background: #080608;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
     max-width: 900px;
     margin: 0 auto;
 }
 
 .telemetry-header {
-    background: #0b1021;
+    background: #120d10;
     padding: 14px 20px;
     display: flex;
     justify-content: space-between;
@@ -856,7 +856,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #334155;
+    background: #443237;
 }
 
 .telemetry-title {
@@ -871,8 +871,8 @@ body {
 .telemetry-badge {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: var(--android-color);
-    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-gold);
+    background: rgba(251, 191, 36, 0.12);
     padding: 2px 8px;
     border-radius: 4px;
 }
@@ -891,7 +891,7 @@ body {
 }
 
 .cli-prompt {
-    color: var(--primary);
+    color: var(--accent-gold);
     font-weight: 600;
 }
 
@@ -900,13 +900,13 @@ body {
 }
 
 .cli-result {
-    color: #93c5fd;
+    color: #fcd34d;
     margin-bottom: 16px;
 }
 
 .cli-pre {
     font-family: var(--font-mono);
-    color: #7dd3fc;
+    color: #fde68a;
 }
 
 .cli-input-line {
@@ -933,7 +933,7 @@ body {
     border-top: 1px solid var(--border-subtle);
     padding: 48px 0 28px 0;
     margin-top: 60px;
-    background: rgba(4, 6, 12, 0.9);
+    background: rgba(6, 5, 6, 0.95);
 }
 
 .footer-inner {
@@ -973,7 +973,7 @@ body {
 }
 
 .footer-links a:hover {
-    color: var(--primary);
+    color: var(--accent-gold);
 }
 
 .footer-credit {

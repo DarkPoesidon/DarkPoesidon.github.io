@@ -1,5 +1,6 @@
 /**
  * Dark Poseidon — ThreeUI Aesthetic Engine & Telemetry
+ * Solar Ember / Crimson / Gold / White Warm Palette
  * - WebGL Interactive 3D Energy Core (Inside Hero Box)
  * - Three.js Flow Field Background
  * - Real-time Pinned Repositories API Consumer
@@ -50,12 +51,12 @@ const PINNED_CONFIG = [
 ];
 
 const LANG_COLORS = {
-    'Go': '#00ADD8',
-    'Rust': '#dea584',
-    'JavaScript': '#f1e05a',
-    'TypeScript': '#3178c6',
-    'Kotlin': '#A97BFF',
-    'C++': '#f34b7d'
+    'Go': '#fbbf24',          /* Gold / Yellow */
+    'Rust': '#ef4444',        /* Crimson Red */
+    'JavaScript': '#facc15',  /* Yellow */
+    'TypeScript': '#f97316',  /* Orange */
+    'Kotlin': '#f43f5e',
+    'C++': '#dc2626'
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Three.js Background Ambient Particle Flow Field
+   1. Three.js Background Ambient Particle Flow Field (Warm Solar Embers)
    ========================================================================== */
 function initBackgroundWebGL() {
     const canvas = document.getElementById('webgl-canvas');
@@ -92,21 +93,23 @@ function initBackgroundWebGL() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
-    // Particles
+    // Particles (Warm Red, Orange, Amber & White)
     const count = 450;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
-    const c1 = new THREE.Color(0x38bdf8); // Cyan
-    const c2 = new THREE.Color(0x818cf8); // Indigo
+    const c1 = new THREE.Color(0xf97316); // Warm Orange
+    const c2 = new THREE.Color(0xef4444); // Crimson Red
+    const c3 = new THREE.Color(0xfbbf24); // Warm Gold
 
     for (let i = 0; i < count; i++) {
         positions[i * 3] = (Math.random() - 0.5) * 180;
         positions[i * 3 + 1] = (Math.random() - 0.5) * 180;
         positions[i * 3 + 2] = (Math.random() - 0.5) * 120;
 
-        const col = Math.random() > 0.6 ? c1 : c2;
+        const rand = Math.random();
+        const col = rand > 0.6 ? c1 : (rand > 0.3 ? c2 : c3);
         colors[i * 3] = col.r;
         colors[i * 3 + 1] = col.g;
         colors[i * 3 + 2] = col.b;
@@ -119,7 +122,7 @@ function initBackgroundWebGL() {
         size: 1.8,
         vertexColors: true,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.65,
         blending: THREE.AdditiveBlending
     });
 
@@ -142,7 +145,7 @@ function initBackgroundWebGL() {
 }
 
 /* ==========================================================================
-   2. ThreeUI Hero Interactive 3D Energy Orb / Hologram
+   2. ThreeUI Hero Interactive 3D Solar Energy Core
    ========================================================================== */
 function initHero3DCore() {
     const container = document.getElementById('hero-3d-box');
@@ -164,30 +167,30 @@ function initHero3DCore() {
     const coreGroup = new THREE.Group();
     scene.add(coreGroup);
 
-    // 1. Inner Wireframe Core (Icosahedron)
+    // 1. Inner Wireframe Core (Icosahedron - Crimson & Orange)
     const icoGeo = new THREE.IcosahedronGeometry(11, 2);
     const icoMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
+        color: 0xf97316,
         wireframe: true,
         transparent: true,
-        opacity: 0.35
+        opacity: 0.45
     });
     const icoMesh = new THREE.Mesh(icoGeo, icoMat);
     coreGroup.add(icoMesh);
 
-    // 2. Inner Glowing Octahedron
+    // 2. Inner Glowing Octahedron (Warm Gold / White)
     const octGeo = new THREE.OctahedronGeometry(6, 0);
     const octMat = new THREE.MeshBasicMaterial({
-        color: 0x00f2fe,
+        color: 0xfbbf24,
         wireframe: true,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.9
     });
     const octMesh = new THREE.Mesh(octGeo, octMat);
     coreGroup.add(octMesh);
 
-    // 3. Surrounding Particle Halo
-    const haloCount = 300;
+    // 3. Surrounding Particle Halo (Ember Red & Gold)
+    const haloCount = 320;
     const haloGeo = new THREE.BufferGeometry();
     const haloPos = new Float32Array(haloCount * 3);
 
@@ -203,21 +206,21 @@ function initHero3DCore() {
 
     haloGeo.setAttribute('position', new THREE.BufferAttribute(haloPos, 3));
     const haloMat = new THREE.PointsMaterial({
-        size: 1.4,
-        color: 0x818cf8,
+        size: 1.5,
+        color: 0xef4444,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.85,
         blending: THREE.AdditiveBlending
     });
     const haloMesh = new THREE.Points(haloGeo, haloMat);
     coreGroup.add(haloMesh);
 
-    // 4. Outer Celestial Orbit Ring
+    // 4. Outer Celestial Orbit Ring (Golden Flare)
     const ringGeo = new THREE.TorusGeometry(18, 0.2, 8, 80);
     const ringMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
+        color: 0xfbbf24,
         transparent: true,
-        opacity: 0.4
+        opacity: 0.5
     });
     const ringMesh = new THREE.Mesh(ringGeo, ringMat);
     ringMesh.rotation.x = Math.PI / 3;
@@ -362,7 +365,7 @@ async function loadPinnedRepos() {
 
     container.innerHTML = '';
     repos.forEach((repo) => {
-        const langColor = LANG_COLORS[repo.lang] || '#38bdf8';
+        const langColor = LANG_COLORS[repo.lang] || '#f97316';
         const card = document.createElement('div');
         card.className = 'threeui-card';
 
@@ -417,7 +420,7 @@ window.copyGitClone = function(url, btn) {
     navigator.clipboard.writeText(cmd).then(() => {
         const icon = btn.querySelector('i');
         icon.className = 'fas fa-check';
-        icon.style.color = '#10b981';
+        icon.style.color = '#fbbf24';
 
         setTimeout(() => {
             icon.className = 'far fa-copy';
