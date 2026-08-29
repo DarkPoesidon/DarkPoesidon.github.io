@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkPoesidon | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <img src="https://github.com/DarkPoesidon.png" alt="DarkPoesidon" class="profile-pic">
+            <h1>DarkPoesidon</h1>
+            <p>Welcome to my open-source portfolio</p>
+            <div class="social-links">
+                <a href="https://github.com/DarkPoesidon" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="projects">
+            <h2>My Projects</h2>
+            <div id="repos-container" class="repo-grid">
+                <!-- Repositories will be loaded here via JS -->
+                <p class="loading">Loading projects from GitHub...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> DarkPoesidon. Automatically generated from GitHub.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
