@@ -1,214 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Poseidon | Systems & Core Developer</title>
-    <meta name="description" content="Portfolio of Dark Poseidon — Systems developer specializing in Go, Rust, and secure networking infrastructure.">
-    
-    <!-- Google Fonts -->
+    <title>Dark Poseidon — Systems Engineer & Core Developer</title>
+    <meta name="description" content="Portfolio of Dark Poseidon. High-performance networking engines, security infrastructure, Rust & Go core architecture.">
+
+    <!-- Fonts inspired by ThreeUI (JetBrains Mono & Plus Jakarta Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome & Lucide-like Icons -->
+    <!-- FontAwesome 6 Pro-style icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Three.js for 3D Background -->
+    <!-- Three.js from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- Custom Styles -->
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 3D Canvas Background -->
-    <canvas id="bg-canvas"></canvas>
-    
-    <!-- Ambient Light Spotlight that follows cursor -->
-    <div id="cursor-glow"></div>
-    <div id="cursor-dot"></div>
+    <!-- Background Canvas for Three.js WebGL -->
+    <canvas id="webgl-canvas"></canvas>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <span class="logo-symbol">&lt;/&gt;</span>
-                <span class="logo-text">Dark<span class="gradient-text">Poseidon</span></span>
+    <!-- ThreeUI Ambient Grid & Lighting Overlay -->
+    <div class="grid-overlay"></div>
+    <div class="ambient-glow" id="ambient-glow"></div>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="nav-wrapper">
+            <a href="#" class="brand">
+                <div class="brand-badge">
+                    <span class="brand-dot"></span>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Dark Poseidon</span>
+                    <span class="brand-role">Core Arch</span>
+                </div>
             </a>
-            <div class="nav-links">
-                <a href="#pinned-projects"><i class="fas fa-thumbtack"></i> Pinned Projects</a>
-                <a href="#tech-stack"><i class="fas fa-layer-group"></i> Tech Stack</a>
-                <a href="#terminal-section"><i class="fas fa-terminal"></i> Console</a>
-                <a href="https://github.com/DarkPoesidon" target="_blank" class="nav-btn">
-                    <i class="fab fa-github"></i> <span>GitHub</span>
+
+            <nav class="nav-menu">
+                <a href="#pinned" class="nav-item active"><i class="fas fa-thumbtack"></i> Pinned</a>
+                <a href="#architecture" class="nav-item"><i class="fas fa-cubes"></i> Architecture</a>
+                <a href="#telemetry" class="nav-item"><i class="fas fa-chart-simple"></i> Telemetry</a>
+                <a href="https://github.com/DarkPoesidon" target="_blank" rel="noopener noreferrer" class="btn-threeui-nav">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub Profile</span>
                 </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container hero-content">
-            <div class="hero-avatar-wrapper">
-                <div class="avatar-orbit-ring ring-1"></div>
-                <div class="avatar-orbit-ring ring-2"></div>
-                <div class="avatar-glow"></div>
-                <img src="https://github.com/DarkPoesidon.png" alt="Dark Poseidon" class="profile-pic" id="profile-pic">
-                <div class="status-indicator" title="Active & Building">
-                    <span class="status-dot"></span>
-                </div>
-            </div>
-
-            <div class="hero-badge">
-                <span class="pulse-icon">⚡</span> Systems & Network Core Developer
-            </div>
-
-            <h1 class="hero-title">
-                Dark <span class="gradient-text glitch-effect" data-text="Poseidon">Poseidon</span>
-            </h1>
-
-            <p class="hero-bio">
-                <span class="quote">"</span>Dark coder &bull; Light Lover<span class="quote">"</span>
-            </p>
-
-            <p class="hero-subtext">
-                Crafting high-performance networking engines, secure client applications, and cross-platform desktop & mobile software in <span class="highlight-rust">Rust</span> and <span class="highlight-go">Go</span>.
-            </p>
-
-            <div class="hero-cta">
-                <a href="#pinned-projects" class="btn btn-primary">
-                    <i class="fas fa-meteor"></i> Explore Pinned Work
-                </a>
-                <a href="https://github.com/DarkPoesidon" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                    <i class="fab fa-github"></i> @DarkPoesidon
-                </a>
-                <a href="https://github.com/WhiteDNS" target="_blank" rel="noopener noreferrer" class="btn btn-glass">
-                    <i class="fas fa-shield-halved"></i> WhiteDNS Org
-                </a>
-            </div>
-
-            <!-- Live Summary Stats -->
-            <div class="stats-bar">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-star"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value" id="total-stars">600+</span>
-                        <span class="stat-label">Stars on Pinned</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-thumbtack"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value">4</span>
-                        <span class="stat-label">Pinned Repos</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value">40+</span>
-                        <span class="stat-label">Repositories</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-bolt"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value">Go / Rust</span>
-                        <span class="stat-label">Core Languages</span>
-                    </div>
-                </div>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container">
+    <main>
+        <!-- Hero Section with 3D Centerpiece -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-left">
+                    <div class="pill-badge">
+                        <span class="pill-dot"></span>
+                        <span class="pill-text">High-Throughput Systems &bull; Rust / Go</span>
+                        <span class="pill-version">v3.0</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Building Next-Gen<br>
+                        <span class="gradient-text">Encrypted Routing</span><br>
+                        & Network Cores.
+                    </h1>
+
+                    <p class="hero-lead">
+                        Dark coder &bull; Light lover. Specializing in high-performance networking daemons, Mihomo routing engines, and cross-platform desktop & mobile security infrastructure.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#pinned" class="threeui-button primary">
+                            <span class="button-glow"></span>
+                            <span class="button-content">
+                                <i class="fas fa-arrow-down"></i> Pinned Repositories
+                            </span>
+                        </a>
+                        <a href="https://github.com/WhiteDNS" target="_blank" rel="noopener noreferrer" class="threeui-button glass">
+                            <span class="button-content">
+                                <i class="fas fa-shield-halved"></i> WhiteDNS Org
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Live Mini Telemetry -->
+                    <div class="quick-stats">
+                        <div class="quick-stat-item">
+                            <span class="stat-number" id="hero-stars">600+</span>
+                            <span class="stat-desc">Pinned Stars</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="quick-stat-item">
+                            <span class="stat-number">4</span>
+                            <span class="stat-desc">Core Engines</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="quick-stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-desc">Open Source</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Interactive Viewport Container -->
+                <div class="hero-right">
+                    <div class="three-container" id="hero-3d-box">
+                        <div class="three-hud-top">
+                            <span class="hud-tag">WEBGL // LIVE 3D CORE</span>
+                            <span class="hud-status"><i class="fas fa-circle-dot"></i> INTERACTIVE</span>
+                        </div>
+                        <div class="three-hud-bottom">
+                            <span class="hud-coords" id="hud-coords">ROT: 0.00 / 0.00</span>
+                            <span class="hud-hint">DRAG / HOVER TO ROTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pinned Repositories Section -->
-        <section id="pinned-projects" class="section">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-thumbtack"></i> Featured Showcase</div>
-                <h2 class="section-title">Pinned <span class="gradient-text">Repositories</span></h2>
-                <p class="section-subtitle">Specially curated and pinned projects from my GitHub profile with live metrics.</p>
-            </div>
+        <section id="pinned" class="section-pinned">
+            <div class="container">
+                <div class="section-heading">
+                    <div class="heading-tag">
+                        <i class="fas fa-thumbtack"></i> CURATED FROM GITHUB PROFILE
+                    </div>
+                    <h2 class="heading-title">Pinned <span class="gradient-text">Repositories</span></h2>
+                    <p class="heading-sub">
+                        Active open-source cores and clients developed under <span class="text-highlight">WhiteDNS</span> and personal profile.
+                    </p>
+                </div>
 
-            <div id="pinned-grid" class="pinned-grid">
-                <!-- Cards will be populated and enhanced by script.js -->
-                <div class="loading-container">
-                    <div class="cyber-spinner"></div>
-                    <p>Loading pinned repositories & live telemetry...</p>
+                <div class="pinned-grid" id="pinned-container">
+                    <!-- Cards populated via JS with real-time GitHub telemetry -->
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <span>Connecting to GitHub API for pinned repos...</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tech Stack Section -->
-        <section id="tech-stack" class="section">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-microchip"></i> Technologies</div>
-                <h2 class="section-title">Core <span class="gradient-text">Stack & Tools</span></h2>
-            </div>
+        <!-- Systems Architecture Section -->
+        <section id="architecture" class="section-architecture">
+            <div class="container">
+                <div class="section-heading">
+                    <div class="heading-tag"><i class="fas fa-microchip"></i> STACK & EXPERTISE</div>
+                    <h2 class="heading-title">Technical <span class="gradient-text">Architecture</span></h2>
+                    <p class="heading-sub">Core engineering principles and technologies deployed across projects.</p>
+                </div>
 
-            <div class="tech-grid">
-                <div class="tech-card" data-tilt>
-                    <div class="tech-icon go-icon"><i class="fa-brands fa-golang"></i></div>
-                    <h3>Go (Golang)</h3>
-                    <p>High-concurrency networking, backend daemons, and Wails desktop GUI integrations.</p>
-                </div>
-                <div class="tech-card" data-tilt>
-                    <div class="tech-icon rust-icon"><i class="fa-brands fa-rust"></i></div>
-                    <h3>Rust</h3>
-                    <p>Memory-safe, blazingly fast encryption routing engines and low-level cross-platform clients.</p>
-                </div>
-                <div class="tech-card" data-tilt>
-                    <div class="tech-icon android-icon"><i class="fa-brands fa-android"></i></div>
-                    <h3>Native Android</h3>
-                    <p>Building high-speed network clients and native route integrations with NDK/Rust.</p>
-                </div>
-                <div class="tech-card" data-tilt>
-                    <div class="tech-icon network-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>Network Protocols</h3>
-                    <p>DNS encryption, Mihomo/Clash core architectures, proxy routing, and packet filtering.</p>
+                <div class="arch-grid">
+                    <div class="arch-card">
+                        <div class="arch-card-header">
+                            <div class="arch-icon go"><i class="fa-brands fa-golang"></i></div>
+                            <span class="arch-badge">Go 1.22+</span>
+                        </div>
+                        <h3>Go / Wails Architecture</h3>
+                        <p>Constructing lightweight, native desktop clients with embedded Webview frontends and high-concurrency Mihomo/Clash network routing backends.</p>
+                        <ul class="arch-features">
+                            <li><i class="fas fa-check"></i> Low memory footprint desktop runtimes</li>
+                            <li><i class="fas fa-check"></i> Sub-millisecond DNS resolving engines</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-card">
+                        <div class="arch-card-header">
+                            <div class="arch-icon rust"><i class="fa-brands fa-rust"></i></div>
+                            <span class="arch-badge">Rust 2024</span>
+                        </div>
+                        <h3>Rust Memory-Safe Routing</h3>
+                        <p>Building zero-cost abstraction cryptographic clients and high-throughput tun/tap route proxies for the Aether connection core.</p>
+                        <ul class="arch-features">
+                            <li><i class="fas fa-check"></i> Zero buffer copy packet inspection</li>
+                            <li><i class="fas fa-check"></i> Cross-compiled Linux/Windows/Android engines</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-card">
+                        <div class="arch-card-header">
+                            <div class="arch-icon mobile"><i class="fa-brands fa-android"></i></div>
+                            <span class="arch-badge">Android NDK</span>
+                        </div>
+                        <h3>Native Android Integration</h3>
+                        <p>Integrating high-speed native Rust route libraries with Android VpnService architectures for battery-efficient mobile tunneling.</p>
+                        <ul class="arch-features">
+                            <li><i class="fas fa-check"></i> JNI bridge with zero latency overhead</li>
+                            <li><i class="fas fa-check"></i> Automated background reconnection</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive 3D Hologram / Terminal Section -->
-        <section id="terminal-section" class="section">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-terminal"></i> Interactive Shell</div>
-                <h2 class="section-title">Developer <span class="gradient-text">Console</span></h2>
-            </div>
+        <!-- Interactive Telemetry Console Section -->
+        <section id="telemetry" class="section-telemetry">
+            <div class="container">
+                <div class="telemetry-box">
+                    <div class="telemetry-header">
+                        <div class="terminal-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="telemetry-title">
+                            <i class="fas fa-terminal"></i> darkposeidon@core-node:~ (interactive-cli)
+                        </div>
+                        <div class="telemetry-badge">ONLINE</div>
+                    </div>
 
-            <div class="terminal-wrapper" data-tilt>
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="terminal-title">darkposeidon@universe: ~</div>
-                    <div class="terminal-actions"><i class="fas fa-shield-cat"></i> v2.5.0</div>
-                </div>
-                <div class="terminal-body" id="terminal-body">
-                    <div class="terminal-line"><span class="prompt-user">guest@darkposeidon</span>:<span class="prompt-path">~</span>$ <span class="cmd-text">poseidon --info</span></div>
-                    <div class="terminal-output">
-                        ╔══════════════════════════════════════════════════════════════╗<br>
-                        ║  DARK POSEIDON // SYSTEMS ARCHITECT & CORE ENGINEER          ║<br>
-                        ║  Identity: Dark coder • Light Lover                         ║<br>
-                        ║  Org: WhiteDNS Foundation                                    ║<br>
-                        ║  Status: Pinned engines deployed & active                    ║<br>
-                        ╚══════════════════════════════════════════════════════════════╝
-                    </div>
-                    <div class="terminal-line"><span class="prompt-user">guest@darkposeidon</span>:<span class="prompt-path">~</span>$ <span class="cmd-text">poseidon --list-pinned</span></div>
-                    <div class="terminal-output text-dim">
-                        [1] WhiteVPN-Desktop  (Go)   ⭐ 240+ Stars | Cross-platform Mihomo engine GUI<br>
-                        [2] WhiteAesther      (Rust) ⭐ 150+ Stars | Aether route desktop client<br>
-                        [3] WhiteAestherMobile(Rust) ⭐ 125+ Stars | Native Android client<br>
-                        [4] WhiteDNS-Desktop  (Go)   ⭐ 70+ Stars  | Desktop DNS client utility
-                    </div>
-                    <div id="terminal-interactive-lines"></div>
-                    <div class="terminal-input-row">
-                        <span class="prompt-user">guest@darkposeidon</span>:<span class="prompt-path">~</span>$ 
-                        <input type="text" id="terminal-input" placeholder="type 'help', 'pinned', 'skills', or 'clear'..." autocomplete="off" spellcheck="false">
+                    <div class="telemetry-body" id="cli-output">
+                        <div class="cli-row"><span class="cli-prompt">sys@poseidon:~$</span> <span class="cli-command">neofetch</span></div>
+                        <div class="cli-result">
+                            <pre class="cli-pre">
+   /\_/\    OS: Poseidon-Core Linux x86_64
+  ( o.o )   Host: DarkPoesidon / WhiteDNS
+   > ^ <    Uptime: 24/7 Always Active
+            Core Stack: Rust, Go, Mihomo, Wails, Android NDK
+            Pinned Projects: 4 Active Repositories
+            Philosophy: "Dark coder • Light lover"
+                            </pre>
+                        </div>
+                        <div id="cli-dynamic"></div>
+                        <div class="cli-input-line">
+                            <span class="cli-prompt">sys@poseidon:~$</span>
+                            <input type="text" id="cli-input" placeholder="Type 'help', 'repos', 'stack', or 'clear'..." spellcheck="false" autocomplete="off">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,19 +237,20 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-left">
-                <a href="#" class="footer-logo">Dark<span class="gradient-text">Poseidon</span></a>
-                <p>High performance networking tools & open-source solutions.</p>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-title">Dark Poseidon</span>
+                <span class="footer-sub">Systems Developer &bull; Free & Open Infrastructure</span>
             </div>
+
             <div class="footer-links">
-                <a href="https://github.com/DarkPoesidon" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://github.com/WhiteDNS" target="_blank"><i class="fas fa-shield"></i> WhiteDNS</a>
-                <a href="#pinned-projects"><i class="fas fa-arrow-up"></i> Top</a>
+                <a href="https://github.com/DarkPoesidon" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://github.com/WhiteDNS" target="_blank" rel="noopener noreferrer"><i class="fas fa-shield"></i> WhiteDNS</a>
+                <a href="#pinned"><i class="fas fa-arrow-up"></i> Back to Top</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="year"></span> Dark Poseidon. Pinned showcase powered by GitHub Pages.</p>
+        <div class="footer-credit">
+            &copy; <span id="year-val"></span> Dark Poseidon. Built with ThreeUI aesthetic & WebGL.
         </div>
     </footer>
 
